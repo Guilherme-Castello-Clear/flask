@@ -1,18 +1,26 @@
 from flask import Flask
+import random
+
 app = Flask(__name__)
 
-test = {
-    "test": "a"
-}
-
+sorted_number = random.randint(0, 9)
+print(sorted_number)
 @app.route('/')
-def hello_world():
-    return "<h1 style='text-align: center'>Hello World!</h1>" \
-            "<p>paragraph</p>"
+def index():
+    return "<h1>Guess the nummber between 0 and 9</h1>" \
+           "<img src='https://media.giphy.com/media/3o7aCSPqXE5C6T8tBC/giphy.gif'/>"
 
-@app.route('/username/<name>/<int:age>')
-def greet(name, age):
-    return f"Hello {name}, u are {age}y old"
+@app.route('/<int:guess>')
+def guess_number(guess):
+    if guess > sorted_number:
+        return "<h1>Too hight!</h1>" \
+               "<img src='https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif'/>"
+    elif guess < sorted_number:
+        return "<h1>Too low!</h1>" \
+               "<img src='https://media.giphy.com/media/jD4DwBtqPXRXa/giphy.gif'/>"
+    else:
+        return "<h1>U did it!</h1>" \
+               "<img src='https://media.giphy.com/media/4T7e4DmcrP9du/giphy.gif'/>"
 
 
 if __name__ == "__main__":
