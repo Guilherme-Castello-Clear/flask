@@ -7,5 +7,11 @@ test = {
 
 @app.route('/')
 def hello_world():
-    global test
-    return test
+    return "Hellow World"
+
+@app.route('/bye')
+def say_bye():
+    return "Bye"
+
+if __name__ == "__main__":
+    app.run()
