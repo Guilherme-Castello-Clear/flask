@@ -7,7 +7,8 @@ test = {
 
 @app.route('/')
 def hello_world():
-    return "Hellow World"
+    return "<h1 style='text-align: center'>Hello World!</h1>" \
+            "<p>paragraph</p>"
 
 @app.route('/username/<name>/<int:age>')
 def greet(name, age):
